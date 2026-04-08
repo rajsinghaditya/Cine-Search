@@ -1,17 +1,60 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>CINE SEARCH</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CineSearch | Explore Moving Pictures</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-<body>
+<body class="light-mode">
+    <header class="glass-nav">
+        <div class="logo">
+            <i class="fas fa-film"></i> CineSearch
+        </div>
+        <div class="controls">
+            <div class="search-wrapper">
+                <i class="fas fa-search search-icon"></i>
+                <input type="text" id="searchInput" placeholder="Search movies...">
+            </div>
+            <select id="filterSelect" class="styled-select" aria-label="Filter by rating">
+                <option value="all">All Ratings</option>
+                <option value="high">High Rating (8+)</option>
+                <option value="medium">Average (5-7.9)</option>
+                <option value="low">Low (&lt; 5)</option>
+            </select>
+            <select id="sortSelect" class="styled-select" aria-label="Sort movies">
+                <option value="default">Sort By</option>
+                <option value="ratingDesc">Rating: High to Low</option>
+                <option value="ratingAsc">Rating: Low to High</option>
+                <option value="titleAsc">Title: A to Z</option>
+                <option value="titleDesc">Title: Z to A</option>
+                <option value="dateDesc">Newest</option>
+                <option value="dateAsc">Oldest</option>
+            </select>
+            <button id="showFavsBtn" class="action-btn" title="Toggle Favorites view">
+                <i class="fas fa-heart"></i>
+            </button>
+            <button id="themeToggle" class="action-btn theme-toggle" aria-label="Toggle Theme">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
+    </header>
 
-<h1>🎬 CINE SEARCH</h1>
+    <main>
+        <div id="loading" class="loading-spinner hidden">
+            <div class="spinner"></div>
+            <p>Loading cinematic experiences...</p>
+        </div>
+        <div id="noResults" class="hidden">
+            <i class="far fa-frown-open"></i>
+            <p>No movies found. Try adjusting your search or filters.</p>
+        </div>
+        <div id="movies" class="movie-container hidden"></div>
+        <div id="loaderTarget" class="loader-target"></div>
+    </main>
 
-<div id="loading">Loading movies...</div>
-
-<div id="movies" class="movie-container"></div>
-
-<script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
